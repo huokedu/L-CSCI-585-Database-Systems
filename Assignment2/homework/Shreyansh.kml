@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+<Document>
+<Style id="IconicShrey">
+<IconStyle><Icon><href>http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png</href></Icon></IconStyle>
+</Style>
+<Style id="PolyShrey">
+	<LineStyle>
+		<color>ff000000</color>
+		<width>1</width>
+	</LineStyle>
+	<PolyStyle>
+		<color>ff0000cc</color>
+		<colorMode>normal</colorMode>
+		<fill>1</fill>
+		<outline>1</outline>
+	</PolyStyle>
+</Style>
+<Style id="PolyShrey1">
+	<LineStyle>
+		<color>ff00cccc</color>
+		<width>1</width>
+	</LineStyle>
+	<PolyStyle>
+		<color>ffcccccc</color>
+		<colorMode>normal</colorMode>
+		<fill>1</fill>
+		<outline>1</outline>
+	</PolyStyle>
+</Style>
+<Style id="PolyShrey2">
+	<LineStyle>
+		<color>ff00cccc</color>
+		<width>1</width>
+	</LineStyle>
+	<PolyStyle>
+		<color>ffffcccc</color>
+		<colorMode>normal</colorMode>
+		<fill>1</fill>
+		<outline>1</outline>
+	</PolyStyle>
+</Style>
+<Placemark><name>1204 W Adams</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.286463,34.032523</coordinates></Point>
+</Placemark>
+<Placemark><name>Carol Little</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.276369,34.019160</coordinates></Point>
+</Placemark>
+<Placemark><name>Leavey Library</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.282775,34.021846</coordinates></Point>
+</Placemark>
+<Placemark><name>RTCC</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.286497,34.020085</coordinates></Point>
+</Placemark>
+<Placemark><name>Gould School</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.284291,34.018818</coordinates></Point>
+</Placemark>
+<Placemark><name>Viterbi School</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.288749,34.020856</coordinates></Point>
+</Placemark>
+<Placemark><name>FedEx Office</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.290415,34.018959</coordinates></Point>
+</Placemark>
+<Placemark><name>Cinematic Arts</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.287112,34.023388</coordinates></Point>
+</Placemark>
+<Placemark><name>Fisher Museum</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.287116,34.018908</coordinates></Point>
+</Placemark>
+<Placemark><name>Bank Of America</name>
+<styleUrl>#IconicShrey</styleUrl><Point><coordinates>-118.290953,34.025141</coordinates></Point>
+</Placemark>
+<Placemark><name>ConvexHull</name>
+	<styleUrl>#PolyShrey</styleUrl>
+	<Polygon>
+		<outerBoundaryIs>
+			<LinearRing>
+				<coordinates>
+					-118.284291,34.018818,30
+					-118.290415,34.018959,30
+					-118.290953,34.025141,30
+					-118.286463,34.032523,30
+					-118.276369,34.019160,30
+					-118.284291,34.018818,30
+				</coordinates>
+			</LinearRing>
+		</outerBoundaryIs>
+	</Polygon>
+</Placemark> 
+
+<Placemark><name>Polygon1</name>
+	<styleUrl>#PolyShrey1</styleUrl>
+	<Polygon>
+		<outerBoundaryIs>
+			<LinearRing>
+				<coordinates>
+					-118.286463,34.032523,30
+                    -118.276369,34.019160,30
+                    -118.287112,34.023388,30
+                    -118.287116,34.018908,30
+                    -118.290953,34.025141,30
+                    -118.286463,34.032523,30
+				</coordinates>
+			</LinearRing>
+		</outerBoundaryIs>
+	</Polygon>
+</Placemark> 
+<Placemark><name>Polygon2</name>
+	<styleUrl>#PolyShrey2</styleUrl>
+	<Polygon>
+		<outerBoundaryIs>
+			<LinearRing>
+				<coordinates>
+					-118.282775,34.021846,30
+                    -118.286497,34.020085,30
+                    -118.288749,34.020856,30
+                    -118.290415,34.018959,30
+                    -118.284291,34.018818,30
+                    -118.282775,34.021846,30
+				</coordinates>
+			</LinearRing>
+		</outerBoundaryIs>
+	</Polygon>
+</Placemark> 
+
+</Document></kml>

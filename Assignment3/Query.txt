@@ -1,0 +1,41 @@
+Introduction :- TinkerPop is a collection of various Graph Technologies. Gremlin Console in TinkerPop helps to use different Graph API to build graphs and run queries on them.
+
+-------------------------------------Query - 1 --------------------------------------------------
+
+g = TinkerGraph.open().traversal();
+g.addV(T.id,'CS526','name','CS526').as('526').addV(T.id,'CS400','name','CS400').as('400').addV(T.id,'CS334','name','CS334').as('334').addV(T.id,'CS681','name','CS681').as('681').addV(T.id,'CS420','name','CS420').as('420').addV(T.id,'CS220','name','CS220').as('220').addV(T.id,'CS201','name','CS201').as('201').addV(T.id,'CS101','name','CS101').as('101').addE('has-prereq').from('526').to('400').addE('has-prereq').from('400').to('334').addE('has-prereq').from('681').to('334').addE('has-prereq').from('334').to('201').addE('has-prereq').from('420').to('220').addE('has-prereq').from('220').to('201').addE('has-prereq').from('201').to('101').addE('has-coreq').from('526').to('400').addE('has-coreq').from('420').to('220');
+
+Explanation :-
+1. Gremlin Commands :- In Order to create graph, we have to use the API provided by the TinkerPop. TinkerGraph is an API provided by TinkerPop to create graph. "TinkerGraph.open()" helps to create a new graph structure. In the beginning the graph structure has 0 edges and 0 vertices. Now, in order to traverse the graph, we need a traverser that can refer to all the edges and the vertices in the graph. "traversal()" is used to create the traverser to the graph. We can add vertices to the graph using the "addV()". "addV()" takes in different parameters. These parameters are then assigned to the Vertex (or node). We can specify the ID to the vertex using 'T.id' in "addV()". Gremlin assigns random id's incase they are not explicitly specified in the query. "as()" in query helps to assign a reference name to the output of the preceeding function in gremlin. "addE()" helps to add edges to the graph. It takes in parameter related to the edges. Gremlin also auto assigns a random ID to the edge if not explicitly mentioned. "from()" and "to()" are used describe the start and end of the edge. Gremlin supports function chaining (method chaining). Thus, allowing invoking of multiple methods in a chain.   
+
+2. The Query :- In the above query, I use the TinkerGraph API with open() function to create a graph structure and use the traversal() function to make variable 'g' a graph traverser. Now, using 'g.addV()', I add 8 vertices with ID and names as specified in the question. I have specified same value to name and ID, as gremlin would automatically display the output of vertices with ID. I have created 9 edges accross the 8 vertices as specified in the question. The edges are named "has-prereq" and "has-coreq". I have assigned temporary references to the vertices and used them while declaring the start and the end of a vertex edge. Thus, a graph is formed. 
+
+
+-------------------------------------- Query - 2 ------------------------------------------------------
+
+g.V().as('a').out('has-prereq').as('b').in('has-coreq').as('c').select('a','b').where('a',eq('c'));
+
+Explanation :-
+1. Gremlin Commands :- 'V()' list all the vertices of the traverser. 'g.V()' will traverser to iterate through all the vertices in the graph. 'out()' function takes the traverser to the adjacent vertices on an outward edge. The outward edge can be specified as a parameter to the function. "in()" takes the traverser to the adjacent vertices on an inward edge. "select()" selects the specified vertices in the parameter that are passed by the previous functions in the chaining. "where" gives a condition to the query and helps filter out results.   
+
+2. The Query :- The logic I used in the above query is, If 'a' connects 'b' on an OUT edge 'x' and 'b' connects 'c' on an IN edge 'y' then there are two edges namely 'x' and 'y' from 'a' to 'b' iff 'a' == 'c'. Thus, for all the vertices in the graph ("g.V()"), I label them 'a' and go out on the edge 'has-prereq' and label those vertices 'b'. Now, I check all the vertices that have incoming edge 'has-coreq' on 'b' and label them as 'c'. I select and display vertices 'a' and 'b' where 'a' is equal to 'c'. Thus, asnwering the question 2
+
+-----------------------------------------Query - 3 ----------------------------------------------------
+
+g.V('CS526').repeat(out('has-prereq').as('x')).until(outE().count().is(0)).select('x').unfold();
+
+Explanation :-
+1. Gremlin Commands :- "repeat()" gives looping functionality to gremlin. "Until()" helps specify the condition for which looping is to be done. "outE()" takes the traverser on the outgoing edges (not vertices). Thus, traverser can access the feature of the edge using the outE()."count()" counts the number of outgoing edges. "is(0)" check if the count() is 0. "unfold()" function unfolds the list that is received from the previous function and displays elements of list on separate line.
+
+2. The Query :- The logic I used in the query is, I keep going out on the OUT Vertex from the given vertex until the count of OUT edge becomes zero (there are no more out edge) and select all the vertices that I traverser. I use the repeat() on the OUT edge 'has-prereq' on the vertex 'CS526' and keep traversing upto the root node (that won't have any outgoing edges --> CS101' as per the given query).I have marked all the vertices I traversed as 'x' and select those vertices and display them in an unfolded manner. There by answering the question - 3
+
+
+------------------------------------------Query - 4 -------------------------------------------------
+
+g.V('CS101').as('x').emit().repeat(inE('has-prereq').outV().as('x')).until(inE().count().is(0)).select('x').count(local).max();
+
+Explanation :-
+1. Gremlin Commands :- "emit()" is another function used with "repeat()". "emit()" does the emission before the repeat traverser starts thus helps us to only do valid traversals. "max()" as the name suggests takes the maximum of the results passed by the previous functions in the chain. 
+
+2. The Query :- In the query, the logic is, Until the vertex has an incoming edge keep going down and count the depth. Display the maximum depth (max()) travelled from the vertex. Thus, I select the vertex 'CS101' and the first check if there is any incoming Edge using 'inE()' and then mark all the vertex(outV()) that give this edge 'has-prereq' as 'x'. This step is repeated until I reach vertices that have count = 0 for incoming edges (i.e. there are no incoming edges). Lastly, I select the vertices marked with 'x' and count them using count(). Finally, after getting the count for all the paths, I take the maximum of the count. NOTE: I also mark the current node 'CS101' as 'x' as mentioned by the question. 
+

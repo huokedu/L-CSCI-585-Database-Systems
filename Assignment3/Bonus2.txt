@@ -1,0 +1,21 @@
+---------------- Query - 1 : As a 2 Line Query -----------------------------
+
+g = TinkerGraph.open().traversal();
+g.addV(T.id,'CS526','name','CS526').as('526').addV(T.id,'CS400','name','CS400').as('400').addV(T.id,'CS334','name','CS334').as('334').addV(T.id,'CS681','name','CS681').as('681').addV(T.id,'CS420','name','CS420').as('420').addV(T.id,'CS220','name','CS220').as('220').addV(T.id,'CS201','name','CS201').as('201').addV(T.id,'CS101','name','CS101').as('101').addE('has-prereq').from('526').to('400').addE('has-prereq').from('400').to('334').addE('has-prereq').from('681').to('334').addE('has-prereq').from('334').to('201').addE('has-prereq').from('420').to('220').addE('has-prereq').from('220').to('201').addE('has-prereq').from('201').to('101').addE('has-coreq').from('526').to('400').addE('has-coreq').from('420').to('220');
+
+
+---------------- Query - 2 : As a Single Line Query ---------------------------------
+
+g.V().as('a').out('has-prereq').as('b').in('has-coreq').as('c').select('a','b').where('a',eq('c'))
+
+---------------- Query - 3 : As a Single Line Query -----------------------------------
+
+g.V('CS526').repeat(out('has-prereq').as('x')).until(outE().count().is(0)).select('x').unfold()
+
+
+---------------- Query - 4 : As a Single Line Query --------------------------------------
+ 
+g.V('CS101').as('x').emit().repeat(inE('has-prereq').outV().as('x')).until(inE().count().is(0)).select('x').count(local).max()
+
+----------------------------------END --------------------------------------------------------------
+
