@@ -1,1 +1,2 @@
 # L-CSCI-585-Database-Systems
+The repository is made for the Database Systems course I took at the University of Southern California. The course covered topics like Data modeling, Relational DB Model, SQL, Normalization, Transaction Management, Business Intelligence, Spatial Databases, NoSQL DBs, Big Data, Data Science, MapReduce, Data Mining, Machine Learning, WEKA, TensorFlow, R and Data Visualization. During the course, we had four assignments that are created as separate folders in the repository.
