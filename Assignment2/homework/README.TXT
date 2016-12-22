@@ -1,6 +1,4 @@
-The homework.zip contains 2 folders.
-1. Homework 
-	Homework contains 6 files.
+1. Original homework Files
 	1.1 Shreyansh - The KML file that has the placemark, ConvexHull and the polygons. 
 	1.2 Query - SQL file Containing the two queries. 
 	1.3 Locations - PNG showing the ten locations in point 3 of the homework.
